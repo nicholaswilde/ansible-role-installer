@@ -15,7 +15,8 @@
       changed_when: false
       register: app_verify_version
 
-    - name: Verify '{{ bin_name }} version is {{ app_ver }}.
+    # Need to use stderr. https://github.com/jpillora/installer/issues/11
+    - name: Verify {{ bin_name }} version is {{ app_ver }}.
       assert:
         that:
-          - app_ver in app_verify_version.stdout
+          - app_ver in app_verify_version.stderr

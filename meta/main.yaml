@@ -4,9 +4,9 @@ dependencies:
     version: v1.1.5
 
 galaxy_info:
-  role_name: flux2
+  role_name: installer
   author: Nicholas Wilde
-  description: Install Flux role
+  description: Install installer role
   license: Apache-2.0
   min_ansible_version: 2.7
   platforms:
@@ -37,10 +37,7 @@ galaxy_info:
         - focal
         - xenial
   galaxy_tags:
-    - flux
-    - fluxctl
-    - flux2
-    - fluxcd
-    - kubernetes
-    - gitops
-    - cluster
+    - installer
+    - server
+    - http
+    - binary

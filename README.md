@@ -1,10 +1,10 @@
-# Ansible Role: Flux
+# Ansible Role: installer
 
-[![CI](https://github.com/nicholaswilde/ansible-role-flux/workflows/CI/badge.svg?event=push)](https://github.com/nicholaswilde/ansible-role-flux/actions?query=workflow%3ACI)
+[![CI](https://github.com/nicholaswilde/ansible-role-installer/workflows/CI/badge.svg?event=push)](https://github.com/nicholaswilde/ansible-role-installer/actions?query=workflow%3ACI)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![GitHub](https://img.shields.io/github/license/nicholaswilde/ansible-role-flux)](https://github.com/nicholaswilde/ansible-role-flux/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/github/license/nicholaswilde/ansible-role-installer)](https://github.com/nicholaswilde/ansible-role-installer/blob/main/LICENSE)
 
-This role installs the [Flux](https://github.com/fluxcd/flux2/) binary on any supported host.
+This role installs the [installer](https://github.com/jpillora/installer/) binary on any supported host.
 
 ## Requirements
 
@@ -14,15 +14,15 @@ N/A
 
 Available variables are listed below, along with default values (see [defaults/main.yaml](./defaults/main.yaml)):
 
-    app_ver: '0.5.7'
+    app_ver: '0.2.9'
     app_platform: linux
     app_arch: amd64
 
-Controls for the version of Helm to be installed. See [available flux2 releases](https://github.com/fluxcd/flux2/releases/). You can upgrade or downgrade versions by changing the `app_ver`.
+Controls for the version of Helm to be installed. See [available installer releases](https://github.com/jpillora/installer/releases/). You can upgrade or downgrade versions by changing the `app_ver`.
 
     app_install_dir: /usr/local/bin
 
-The location where the flux2 binary will be installed.
+The location where the installer binary will be installed.
 
 ## Dependencies
 
@@ -36,16 +36,16 @@ Install dependencies
 
     - hosts: all
       roles:
-        - role: nicholaswilde.flux2
+        - role: nicholaswilde.installer
 
 ## Testing
 
-If you want to use [moleculte](https://molecule.readthedocs.io/en/latest/installation.html) to test, be sure to check out the repo in a folder titled `nicholaswilde.flux`
+If you want to use [moleculte](https://molecule.readthedocs.io/en/latest/installation.html) to test, be sure to check out the repo in a folder titled `nicholaswilde.installer`
 
 ```
 # Checkout
-$ git clone https://github.com/nicholaswilde/ansible-role-flux.git nicholaswilde.flux2
-$ cd nicholaswilde.flux2
+$ git clone https://github.com/nicholaswilde/ansible-role-installer.git nicholaswilde.installer
+$ cd nicholaswilde.installer
 # Test
 $ molecule test
 # Converge

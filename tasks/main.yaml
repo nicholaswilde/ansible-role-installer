@@ -10,6 +10,13 @@
       paths:
         - '{{ role_path }}/vars'
 
+#- name: install common pkgs...
+#  become: true
+#  become_user: root
+#  package:
+#    name: gzip
+#    state: present
+
 - name: Check if app exists in {{ app_binary_dir }}...
   become: true
   stat:
@@ -37,12 +44,13 @@
         mode: 0755
 
     - name: Unarchive /tmp/{{ app_archive }}
-      become: true
-      unarchive:
-        remote_src: true
-        src: /tmp/{{ app_archive }}
-        dest: '{{ app_binary_dir }}'
-        creates: '{{ app_install_exe }}'
+      command: 'gzip -d -k -N /tmp/{{ app_archive }}'
+
+    - name: Copy file with owner and permissions
+      copy:
+        src: '/tmp/{{ bin_name }}'
+        dest: '{{ app_install_exe }}'
+        mode: a+x
   always:
 
     - name: Remove /tmp/{{ app_archive }}

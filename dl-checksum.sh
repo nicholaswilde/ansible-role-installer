@@ -36,12 +36,14 @@ dl() {
 dl_ver() {
     local ver=$1
     printf "  '%s':\n" $ver
-    dl $ver darwin amd64
-    dl $ver linux amd64
-    dl $ver linux arm64
-    dl $ver linux arm
-    dl $ver windows 386 zip
-    dl $ver windows amd64 zip
+    dl $ver darwin amd64 gz
+    dl $ver linux 386 gz
+    dl $ver linux amd64 gz
+    dl $ver linux arm64 gz
+    dl $ver linux armv6 gz
+    dl $ver linux armv7 gz
+    dl $ver windows 386 gz
+    dl $ver windows amd64 gz
 }
 
 dl_ver ${1:-$VERSION}
