@@ -48,6 +48,7 @@
         src: '/tmp/{{ bin_name }}'
         dest: '{{ app_install_exe }}'
         mode: a+x
+        remote_src: true
 
 - name: Make a link from {{ app_install_exe }} to {{ app_install_link }}
   file:
