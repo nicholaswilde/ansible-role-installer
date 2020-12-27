@@ -38,16 +38,10 @@
 
     - name: Unarchive /tmp/{{ app_archive }}
       command: 'gzip -d --keep -N /tmp/{{ app_archive }}'
-      register: app_unarchive
-
-    - name: Unarchive /tmp/{{ app_archive }}
-      command: 'ls /tmp'
-      register: app_unarchive
-
-    - debug:
-        msg: '{{ app_unarchive }}'
 
     - name: Copy file with owner and permissions
+      become: true
+      become_user: root
       copy:
         src: '/tmp/{{ bin_name }}'
         dest: '{{ app_install_exe }}'
