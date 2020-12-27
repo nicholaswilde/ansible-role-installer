@@ -37,6 +37,8 @@
         mode: 0755
 
     - name: Unarchive /tmp/{{ app_archive }}
+      become: true
+      become_user: root
       command: 'gzip -d --keep -N /tmp/{{ app_archive }}'
 
     - name: Copy file with owner and permissions
