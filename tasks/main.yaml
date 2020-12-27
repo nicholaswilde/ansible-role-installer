@@ -39,7 +39,7 @@
     - name: Unarchive /tmp/{{ app_archive }}
       become: true
       become_user: root
-      command: 'gzip -d --keep -N /tmp/{{ app_archive }}'
+      command: 'gzip -d -N /tmp/{{ app_archive }}'
 
     - name: Copy file with owner and permissions
       become: true
@@ -48,14 +48,6 @@
         src: '/tmp/{{ bin_name }}'
         dest: '{{ app_install_exe }}'
         mode: a+x
-  always:
-
-    - name: Remove /tmp/{{ app_archive }}
-      become: true
-      become_user: root
-      file:
-        path: /tmp/{{ app_archive }}
-        state: absent
 
 - name: Make a link from {{ app_install_exe }} to {{ app_install_link }}
   file:
